@@ -23,7 +23,7 @@ public class UsuarioController {
 	
 	@GetMapping("/listUsuarios")
 	public String listUsuariosPage(Model model) {
-		System.out.println("\\n\\t Recogo la peticion a @GetMapping(\"/listUsuarios\")");		
+		System.out.println("\n\t Recogo la peticion a @GetMapping(\"/listUsuarios\")");		
 		
 		model.addAttribute("listaUsuarios",usuarioService.findAllUsers());
 		return "listUsuariosBasico";		
@@ -34,8 +34,10 @@ public class UsuarioController {
    */
     // Metodo para mostrar el formulario de aniadir usuario
     @GetMapping("/addUsuario")
-    public String mostrarFormularioAddUsuario() {
+    public String mostrarFormularioAddUsuario(Model model) {
     	System.out.println("\n\t @GetMapping(\"/addUsuario\")");
+    	// Se pasa un objeto vacío al modelo
+        model.addAttribute("usuario", new Usuario()); 
         return "addUsuario"; // Esto coincide con el nombre de tu plantilla Thymeleaf (addUsuario.html)
     }
     
